@@ -5,7 +5,11 @@ const JobContainer = ({ jobs }) => {
   return (
     <div className="container">
       <h1>hello this is the job container component</h1>
-      {jobs.length ? console.log(jobs) : console.log("nothing to see here yet")}
+      {jobs.length
+        ? jobs.map((job) => {
+            return <h1>{job.id}</h1>;
+          })
+        : null}
     </div>
   );
 };
