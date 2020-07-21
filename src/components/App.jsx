@@ -1,7 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { compose } from "redux";
 
-function App() {
-  return <div></div>;
+class App extends Component {
+  render() {
+    return <div>hellow world</div>;
+  }
 }
 
-export default App;
+export default compose(connect(null, null))(App);
