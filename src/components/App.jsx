@@ -4,16 +4,18 @@ import { compose } from "redux";
 import { fetchData } from "../redux/actions/jobActions";
 
 class App extends Component {
-  componentDidMount() {
-    this.props.fetchData();
-  }
+  // componentDidMount() {
+  //   this.props.fetchData();
+  // }
   render() {
-    return <div>hellow world</div>;
+    return <div>{this.jobs ? console.log(this.props.jobs) : null}</div>;
   }
 }
 
 const actions = {
   fetchData,
 };
-
-export default compose(connect(null, actions))(App);
+const mapState = (state) => ({
+  jobs: state.jobs,
+});
+export default compose(connect(mapState, actions))(App);
