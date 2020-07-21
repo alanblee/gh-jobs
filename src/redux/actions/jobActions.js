@@ -9,12 +9,12 @@ export const fetchData = (params, page, cancelToken) => async (dispatch) => {
       cancelToken: cancelToken.token,
       params: { markdown: true, page, ...params },
     });
-    // console.log(jobs.data);
+
     dispatch({ type: GET_DATA, payload: jobs.data });
   } catch (err) {
-    // if (axios.isCancel(err)) {
-    //   return;
-    // }
+    if (axios.isCancel(err)) {
+      return;
+    }
     dispatch({ type: JOB_ERROR, payload: err.message });
   }
 };
