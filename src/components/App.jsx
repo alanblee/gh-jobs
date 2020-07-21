@@ -7,7 +7,7 @@ import JobContainer from "./jobContainer/jobContainer";
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="main-app">
         <SearchForm />
         <JobContainer />
       </div>
