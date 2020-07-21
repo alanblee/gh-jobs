@@ -4,7 +4,6 @@ import JobCard from "./jobCard/jobCard";
 const JobContainer = ({ jobs }) => {
   return (
     <div className="container">
-      <h1>hello this is the job container component</h1>
       {jobs.length
         ? jobs.map((job) => {
             return <JobCard key={job.id} job={job} />;

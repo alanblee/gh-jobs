@@ -24,7 +24,6 @@ const JobCard = ({ job }) => {
           <button>View Details</button>
         </div>
       </div>
-      <img src={job.company_logo} alt={`${job.company} logo`} />
     </div>
   );
 };
