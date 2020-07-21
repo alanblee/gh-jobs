@@ -1,21 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { fetchData } from "../redux/actions/jobActions";
+import JobContainer from "./jobContainer/jobContainer";
 
 class App extends Component {
-  // componentDidMount() {
-  //   this.props.fetchData();
-  // }
   render() {
-    return <div>{this.jobs ? console.log(this.props.jobs) : null}</div>;
+    return <JobContainer />;
   }
 }
 
-const actions = {
-  fetchData,
-};
-const mapState = (state) => ({
-  jobs: state.jobs,
-});
-export default compose(connect(mapState, actions))(App);
+// const actions = {
+//   fetchData,
+// };
+export default compose(connect(null, null))(App);

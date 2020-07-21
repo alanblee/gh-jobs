@@ -19,7 +19,7 @@ const getData = (state = initialState, payload) => {
   return {
     ...state,
     loading: false,
-    jobs: payload.jobs,
+    jobs: payload,
   };
 };
 
@@ -28,7 +28,7 @@ const handleError = (state = initialState, payload) => {
     ...state,
     loading: false,
     jobb: [],
-    error: payload.error,
+    error: payload,
   };
 };
 
