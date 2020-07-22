@@ -6,14 +6,24 @@ import { updatePage } from "../../redux/actions/jobActions";
 const JobPagination = ({ page, hasNextPage, updatePage }) => {
   return (
     <Pagination>
-      {page !== 1 && <Pagination.Prev />}
-      {page !== 1 && <Pagination.Item>1</Pagination.Item>}
+      {page !== 1 && <Pagination.Prev onClick={() => updatePage(page - 1)} />}
+      {page !== 1 && (
+        <Pagination.Item onClick={() => updatePage(1)}>1</Pagination.Item>
+      )}
       {page > 2 && <Pagination.Ellipsis />}
-      {page > 2 && <Pagination.Item>{page - 1}</Pagination.Item>}
+      {page > 2 && (
+        <Pagination.Item onClick={() => updatePage(page - 1)}>
+          {page - 1}
+        </Pagination.Item>
+      )}
       <Pagination.Item active>{page}</Pagination.Item>
-      {hasNextPage && <Pagination.Item>{page + 1}</Pagination.Item>}
+      {hasNextPage && (
+        <Pagination.Item onClick={() => updatePage(page + 1)}>
+          {page + 1}
+        </Pagination.Item>
+      )}
 
-      {hasNextPage && <Pagination.Next />}
+      {hasNextPage && <Pagination.Next onClick={() => updatePage(page + 1)} />}
     </Pagination>
   );
 };
