@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import SearchForm from "./jobSearch/jobSearchForm";
 import JobContainer from "./jobContainer/jobContainer";
-
+import { Container } from "react-bootstrap";
 class App extends Component {
   render() {
     return (
-      <div className="main-app">
+      <Container>
         <SearchForm />
         <JobContainer />
-      </div>
+      </Container>
     );
   }
 }

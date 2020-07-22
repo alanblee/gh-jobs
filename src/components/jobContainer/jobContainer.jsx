@@ -4,7 +4,7 @@ import JobCard from "./jobCard/jobCard";
 
 const JobContainer = ({ jobs, loading, error }) => {
   const renderJobs = () => {
-    jobs.map((job) => {
+    return jobs.map((job) => {
       return <JobCard key={job.id} job={job} />;
     });
   };
@@ -12,7 +12,6 @@ const JobContainer = ({ jobs, loading, error }) => {
     <div className="container">
       {loading ? "Loading..." : null}
       {error ? error : null}
-
       {jobs.length ? renderJobs() : null}
     </div>
   );
