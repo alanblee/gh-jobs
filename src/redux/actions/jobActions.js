@@ -21,8 +21,10 @@ export const fetchData = (params, page, cancelToken, cancelToken2) => async (
       cancelToken: cancelToken2.token,
       params: { markdown: true, page: page + 1, ...params },
     });
+    if (nextPage.length !== 0) {
+      dispatch({ type: UPDATE_NEXT_PAGE, payload: nextPage.length !== 0 });
+    }
     dispatch({ type: GET_DATA, payload: jobs.data });
-    dispatch({ type: UPDATE_NEXT_PAGE, payload: nextPage.length !== 0 });
   } catch (err) {
     if (axios.isCancel(err)) {
       return;
