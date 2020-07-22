@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { Container } from "react-bootstrap";
 import JobCard from "./jobCard/jobCard";
+import JobsPagination from "../jobsPagination/jobsPagination";
 
 const JobContainer = ({ jobs, loading, error }) => {
   const renderJobs = () => {
@@ -9,11 +11,13 @@ const JobContainer = ({ jobs, loading, error }) => {
     });
   };
   return (
-    <div className="container">
+    <Container className="my-4">
+      <JobsPagination />
       {loading ? "Loading..." : null}
       {error ? error : null}
       {jobs.length ? renderJobs() : null}
-    </div>
+      <JobsPagination />
+    </Container>
   );
 };
 

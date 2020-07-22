@@ -3,19 +3,24 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { fetchData } from "../../redux/actions/jobActions";
 
-const SearchForm = ({ fetchData }) => {
+const SearchForm = ({ fetchData, page }) => {
   const [params, setParams] = useState({});
-  const [page, setPage] = useState(1);
+
   useEffect(() => {
     const cancelToken = axios.CancelToken.source();
-    fetchData(params, page, cancelToken);
+    const cancelToken2 = axios.CancelToken.source();
+    fetchData(params, page, cancelToken, cancelToken2);
 
     return () => {
       cancelToken.cancel();
+      cancelToken2.cancel();
     };
   }, [params, page]);
   return <form></form>;
 };
 
 const actions = { fetchData };
-export default connect(null, actions)(SearchForm);
+const mapState = (state) => ({
+  page: state.jobs.page,
+});
+export default connect(mapState, actions)(SearchForm);

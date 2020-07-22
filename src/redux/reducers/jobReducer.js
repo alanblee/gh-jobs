@@ -1,10 +1,18 @@
 import { createReducer } from "./reducerUtil";
-import { MAKE_REQUEST, GET_DATA, JOB_ERROR } from "../types/jobTypes";
+import {
+  MAKE_REQUEST,
+  GET_DATA,
+  JOB_ERROR,
+  UPDATE_NEXT_PAGE,
+  UPDATE_PAGE,
+} from "../types/jobTypes";
 
 const initialState = {
   jobs: [],
   error: false,
   loading: false,
+  hasNextPage: false,
+  page: 1,
 };
 
 const makeRequest = (state = initialState, payload) => {
@@ -22,7 +30,18 @@ const getData = (state = initialState, payload) => {
     jobs: payload,
   };
 };
-
+const updateNextPage = (state = initialState, payload) => {
+  return {
+    ...state,
+    hasNextPage: payload,
+  };
+};
+const updatePage = (state = initialState, payload) => {
+  return {
+    ...state,
+    page: payload,
+  };
+};
 const handleError = (state = initialState, payload) => {
   return {
     ...state,
@@ -36,4 +55,6 @@ export default createReducer(initialState, {
   [MAKE_REQUEST]: makeRequest,
   [GET_DATA]: getData,
   [JOB_ERROR]: handleError,
+  [UPDATE_NEXT_PAGE]: updateNextPage,
+  [UPDATE_PAGE]: updatePage,
 });

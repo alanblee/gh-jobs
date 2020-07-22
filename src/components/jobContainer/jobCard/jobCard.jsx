@@ -11,7 +11,7 @@ const JobCard = ({ job }) => {
     });
   };
   return (
-    <Card>
+    <Card className="mb-3">
       <Card.Body>
         <div className="d-flex justify-content-between">
           <div>
@@ -39,7 +39,7 @@ const JobCard = ({ job }) => {
         </div>
         <Card.Text>
           <Button variant="primary" onClick={() => handleOpen()}>
-            View Details
+            {open ? "Hide Details" : "View Details"}
           </Button>
         </Card.Text>
         <Collapse in={open}>

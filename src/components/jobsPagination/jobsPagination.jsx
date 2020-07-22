@@ -1,7 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Pagination } from "react-bootstrap";
+import { updatePage } from "../../redux/actions/jobActions";
 
-const JobPagination = ({ page, setPage, hasNextPage }) => {
+const JobPagination = ({ page, hasNextPage, updatePage }) => {
   return (
     <Pagination>
       {page !== 1 && <Pagination.Prev />}
@@ -16,4 +18,11 @@ const JobPagination = ({ page, setPage, hasNextPage }) => {
   );
 };
 
-export default JobPagination;
+const mapState = (state) => ({
+  page: state.jobs.page,
+  hasNextPage: state.jobs.hasNextPage,
+});
+const actions = {
+  updatePage,
+};
+export default connect(mapState, actions)(JobPagination);
