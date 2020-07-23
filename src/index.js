@@ -8,12 +8,10 @@ import App from "./components/App.jsx";
 import store from "./redux/store/configStore";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </Router>
-  </React.StrictMode>,
+  <Router>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Router>,
   document.getElementById("root")
 );

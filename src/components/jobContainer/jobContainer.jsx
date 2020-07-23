@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 import JobCard from "./jobCard/jobCard";
 import JobsPagination from "../jobsPagination/jobsPagination";
-
+import SearchForm from "../jobSearch/jobSearchForm";
 const JobContainer = ({ jobs, loading, error }) => {
   const renderJobs = () => {
     return jobs.map((job) => {
@@ -12,6 +12,7 @@ const JobContainer = ({ jobs, loading, error }) => {
   };
   return (
     <Container className="my-4">
+      <SearchForm />
       <JobsPagination />
       {loading ? "Loading..." : null}
       {error ? error : null}
