@@ -2,10 +2,26 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { Form, Col } from "react-bootstrap";
-import { fetchData, updatePage } from "../../redux/actions/jobActions";
+import {
+  fetchData,
+  updatePage,
+  fetchNextPage,
+} from "../../redux/actions/jobActions";
 
-const SearchForm = ({ fetchData, page, updatePage }) => {
+const SearchForm = ({ fetchData, page, updatePage, fetchNextPage }) => {
   const [params, setParams] = useState({});
+  useEffect(() => {
+    const cancelToken = axios.CancelToken.source();
+    const cancelToken2 = axios.CancelToken.source();
+
+    fetchData(params, page, cancelToken);
+    fetchNextPage(params, page, cancelToken2);
+
+    return () => {
+      cancelToken.cancel();
+      cancelToken2.cancel();
+    };
+  }, [params, page]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -14,16 +30,6 @@ const SearchForm = ({ fetchData, page, updatePage }) => {
       return { ...prevParams, [name]: value };
     });
   };
-  useEffect(() => {
-    const cancelToken = axios.CancelToken.source();
-    const cancelToken2 = axios.CancelToken.source();
-    fetchData(params, page, cancelToken, cancelToken2);
-
-    return () => {
-      cancelToken.cancel();
-      cancelToken2.cancel();
-    };
-  }, [params, page]);
   return (
     <Form className="mb-4">
       <Form.Row className="align-items-end">
@@ -61,7 +67,7 @@ const SearchForm = ({ fetchData, page, updatePage }) => {
   );
 };
 
-const actions = { fetchData, updatePage };
+const actions = { fetchData, updatePage, fetchNextPage };
 const mapState = (state) => ({
   page: state.jobs.page,
 });

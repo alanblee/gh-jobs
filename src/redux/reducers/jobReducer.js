@@ -40,6 +40,7 @@ const updatePage = (state = initialState, payload) => {
   return {
     ...state,
     page: payload,
+    hasNextPage: false,
   };
 };
 const handleError = (state = initialState, payload) => {
