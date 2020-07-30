@@ -15,10 +15,12 @@ const AuthForm = () => {
           Login
         </button>
         <span className="has-separator">Or</span>
-        <Link>Login in with Google</Link>
+        <Link className="google-login" to="/#">
+          <i className="fa fa-google"></i> Login in with Google
+        </Link>
       </form>
       <div className="sign-up">
-        Don't have an account?<Link>Sign Up</Link>
+        Don't have an account? <Link>Sign Up</Link>
       </div>
     </div>
   );
