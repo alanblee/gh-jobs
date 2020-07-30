@@ -7,7 +7,7 @@ export const axiosWithAuth = () => {
       "Content-Type": "application/json",
       Authorization: `${token}`,
     },
-    baseURL: "https://bw-ft-sleep-tracker-1.herokuapp.com",
+    baseURL: "https://desolate-garden-82964.herokuapp.com/",
   });
 };
 

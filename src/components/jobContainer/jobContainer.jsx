@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import JobCard from "./jobCard/jobCard";
 import JobsPagination from "../jobsPagination/jobsPagination";
 import SearchForm from "../jobSearch/jobSearchForm";
+
 const JobContainer = ({ jobs, loading, error }) => {
   const renderJobs = () => {
     return jobs.map((job) => {
