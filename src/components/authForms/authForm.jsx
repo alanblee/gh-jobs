@@ -3,24 +3,66 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const AuthForm = () => {
+  const [newUser, setNewUser] = useState(false);
+  const [formInput, setFormInput] = useState({});
+
+  const handleChange = (event) => {
+    const { value, name } = event.target;
+    setFormInput({
+      ...formInput,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formInput);
+  };
+  const toggleUser = () => {
+    setNewUser(!newUser);
+  };
   return (
     <div className="form-data">
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="logo">
           <h3>GH-Jobs</h3>
         </div>
-        <input type="text" name="username" placeholder="Username" />
-        <input type="password" name="password" placeholder="Password" />
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          onChange={handleChange}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+        />
         <button className="form-btn" type="submit">
-          Login
+          {!newUser ? <>Login</> : <> Sign Up</>}
         </button>
         <span className="has-separator">Or</span>
-        <Link className="google-login" to="/#">
+        <Link className="google-login" to="#">
           <i className="fa fa-google"></i> Login in with Google
         </Link>
       </form>
       <div className="sign-up">
-        Don't have an account? <Link>Sign Up</Link>
+        {!newUser ? (
+          <>
+            Don't have an account?{" "}
+            <Link to="#" onClick={toggleUser}>
+              Sign Up
+            </Link>
+          </>
+        ) : (
+          <>
+            Already have an account?{" "}
+            <Link to="#" onClick={toggleUser}>
+              Log In
+            </Link>{" "}
+          </>
+        )}
       </div>
     </div>
   );
