@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <Route exact path="/authentication" component={AuthForm} />
+        <Route exact path="/" component={AuthForm} />
         <Route exact path="/job-search" component={JobContainer} />
       </Container>
     );

@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const AuthForm = () => {
   return (
-    <form>
-      <label htmlFor="username">username</label>
-      <input type="text" name="username" />
-      <label htmlFor="password"> password </label>
-      <input type="password" name="password" />
-    </form>
+    <div className="form-data">
+      <form>
+        <div className="logo">
+          <h3>GH-Jobs</h3>
+        </div>
+        <input type="text" name="username" placeholder="Username" />
+        <input type="password" name="password" placeholder="Password" />
+        <button className="form-btn" type="submit">
+          Login
+        </button>
+        <span className="has-separator">Or</span>
+        <Link>Login in with Google</Link>
+      </form>
+      <div className="sign-up">
+        Don't have an account?<Link>Sign Up</Link>
+      </div>
+    </div>
   );
 };
 
