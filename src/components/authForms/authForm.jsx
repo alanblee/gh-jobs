@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
@@ -7,10 +8,16 @@ import {
   loginUser,
 } from "../../redux/actions/authActions";
 
-const AuthForm = () => {
+const AuthForm = ({ loggedIn, getUser, registerUser, loginUser }) => {
+  const { push } = useHistory();
   const [newUser, setNewUser] = useState(false);
   const [formInput, setFormInput] = useState({});
 
+  useEffect(() => {
+    getUser(() => {
+      push("/job-search");
+    });
+  }, []);
   const handleChange = (event) => {
     const { value, name } = event.target;
     setFormInput({
@@ -21,7 +28,14 @@ const AuthForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formInput);
+    if (!newUser) {
+      loginUser(formInput, () => {
+        push("/job-search");
+      });
+    } else {
+      registerUser(formInput);
+      setNewUser(!newUser);
+    }
   };
   const toggleUser = () => {
     setNewUser(!newUser);

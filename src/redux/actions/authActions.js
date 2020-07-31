@@ -1,9 +1,14 @@
 import { axiosWithAuth } from "../../utils/axiosCalls";
-import { LOGIN_USER, REGISTER_USER, AUTH_ERROR } from "../types/authTypes";
+import {
+  LOGIN_USER,
+  REGISTER_USER,
+  AUTH_ERROR,
+  GET_USER,
+} from "../types/authTypes";
 
 export const registerUser = (credentials) => async (dispatch) => {
   try {
-    const user = await axiosWithAuth().post("/api/auth/register", credentials);
+    const user = await axiosWithAuth().post("/auth/register", credentials);
     dispatch({ type: REGISTER_USER, payload: user });
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err.message });
@@ -11,7 +16,7 @@ export const registerUser = (credentials) => async (dispatch) => {
 };
 export const loginUser = (credentials, redirect) => async (dispatch) => {
   try {
-    const user = await axiosWithAuth().post("/api/auth/login", credentials);
+    const user = await axiosWithAuth().post("/auth/login", credentials);
     dispatch({ type: LOGIN_USER, payload: user.data });
     localStorage.setItem("token", user.data.token);
     redirect();
@@ -20,11 +25,18 @@ export const loginUser = (credentials, redirect) => async (dispatch) => {
   }
 };
 
-export const getUser = () => async (dispatch) => {
+export const getUser = (redirect) => async (dispatch) => {
   try {
-    const user = await axiosWithAuth().get("/api/users");
-    dispatch({ type: LOGIN_USER, payload: user.data });
+    const user = await axiosWithAuth().get("/user");
+    if (user) {
+      dispatch({ type: LOGIN_USER, payload: user.data });
+      redirect();
+    }
   } catch (err) {
-    dispatch({ type: AUTH_ERROR, payload: err.message });
+    if (err.response.status === 401) {
+      dispatch({ type: AUTH_ERROR, payload: "Please login" });
+    } else {
+      dispatch({ type: AUTH_ERROR, payload: err.message });
+    }
   }
 };
