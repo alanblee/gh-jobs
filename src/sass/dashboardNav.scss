@@ -1,0 +1,30 @@
+.navigation {
+  position: fixed;
+  width: 6rem;
+  height: 100%;
+  background-color: #3897f0;
+  transition: 0.5s;
+  overflow: hidden;
+
+  &:hover {
+    width: 30rem;
+  }
+
+  ul {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    li {
+      position: relative;
+      width: 100%;
+      list-style: none;
+
+      a {
+        position: relative;
+        display: none;
+      }
+    }
+  }
+}
