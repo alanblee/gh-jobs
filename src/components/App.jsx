@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import PrivateRoute from "../utils/privateRoute";
 import JobContainer from "./jobContainer/jobContainer";
 import AuthForm from "./authForms/authForm";
 import { Container } from "react-bootstrap";
@@ -10,7 +11,7 @@ class App extends Component {
     return (
       <Container>
         <Route exact path="/" component={AuthForm} />
-        <Route exact path="/job-search" component={JobContainer} />
+        <PrivateRoute exact path="/job-search" component={JobContainer} />
       </Container>
     );
   }

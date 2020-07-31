@@ -1,10 +1,5 @@
 import { axiosWithAuth } from "../../utils/axiosCalls";
-import {
-  LOGIN_USER,
-  REGISTER_USER,
-  AUTH_ERROR,
-  GET_USER,
-} from "../types/authTypes";
+import { LOGIN_USER, REGISTER_USER, AUTH_ERROR } from "../types/authTypes";
 
 export const registerUser = (credentials) => async (dispatch) => {
   try {

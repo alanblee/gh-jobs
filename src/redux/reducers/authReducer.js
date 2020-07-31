@@ -4,7 +4,6 @@ import {
   REGISTER_USER,
   AUTH_ERROR,
   LOADING_USER,
-  GET_USER,
 } from "../types/authTypes";
 
 const initialState = {
@@ -77,5 +76,4 @@ export default createReducer(initialState, {
   [LOADING_USER]: loadingUser,
   [AUTH_ERROR]: authError,
   [REGISTER_USER]: registerUser,
-  [GET_USER]: getUser,
 });
