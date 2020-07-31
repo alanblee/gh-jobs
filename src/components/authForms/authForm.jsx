@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import {
+  getUser,
+  registerUser,
+  loginUser,
+} from "../../redux/actions/authActions";
 
 const AuthForm = () => {
   const [newUser, setNewUser] = useState(false);
@@ -68,4 +73,12 @@ const AuthForm = () => {
   );
 };
 
-export default connect(null, null)(AuthForm);
+const mapState = (state) => ({
+  loggedIn: state.auth.loggedIn,
+});
+const actions = {
+  getUser,
+  loginUser,
+  registerUser,
+};
+export default connect(mapState, actions)(AuthForm);
