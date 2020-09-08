@@ -1,42 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const NavList = () => {
+const NavList = ({ url }) => {
   return (
     <>
       <div className="navigation">
         <ul>
           <li>
-            <Link to="/">
+            <NavLink to="/">
               <span className="icon">
                 <i className="fa fa-home" aria-hidden="true"></i>
               </span>
               <span className="title">Home</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/">
+            <NavLink to="/">
               <span className="icon">
                 <i className="fa fa-user" aria-hidden="true"></i>
               </span>
               <span className="title">Profile</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/">
+            <NavLink to={`${url}/search`}>
               <span className="icon">
                 <i className="fa fa-search" aria-hidden="true"></i>
               </span>
               <span className="title">Job Search</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/">
+            <NavLink to="/">
               <span className="icon">
                 <i className="fa fa-sign-out" aria-hidden="true"></i>
               </span>
               <span className="title">Logout</span>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
