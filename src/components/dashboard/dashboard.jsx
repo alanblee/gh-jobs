@@ -11,9 +11,8 @@ const Dashboard = () => {
     <div>
       <NavList url={url} />
 
-      <NavLink to={`${url}/search`}>render</NavLink>
-
-      <Route path={`${path}/search`} render={() => <JobContainer />} />
+      <Route path={`${path}/job-search`} render={() => <JobContainer />} />
+      <Route path={`${path}/profile`} render={() => <JobContainer />} />
     </div>
   );
 };

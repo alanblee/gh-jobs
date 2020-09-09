@@ -15,7 +15,7 @@ const AuthForm = ({ loggedIn, getUser, registerUser, loginUser }) => {
 
   useEffect(() => {
     getUser(() => {
-      push("/job-search");
+      push("/dashboard");
     });
   }, []);
   const handleChange = (event) => {

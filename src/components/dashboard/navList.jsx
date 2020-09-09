@@ -23,7 +23,7 @@ const NavList = ({ url }) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to={`${url}/search`}>
+            <NavLink to={`${url}/job-search`}>
               <span className="icon">
                 <i className="fa fa-search" aria-hidden="true"></i>
               </span>
