@@ -30,7 +30,7 @@ const AuthForm = ({ loggedIn, getUser, registerUser, loginUser }) => {
     event.preventDefault();
     if (!newUser) {
       loginUser(formInput, () => {
-        push("/job-search");
+        push("/dashboard");
       });
     } else {
       registerUser(formInput);
