@@ -10,6 +10,20 @@ const JobCard = ({ job }) => {
       return !prevOpen;
     });
   };
+
+  const handleSave = (jobToSave) => {
+    const jobInfo = {
+      title: jobToSave.title,
+      company: jobToSave.company,
+      posted_date: jobToSave.created_at,
+      type: jobToSave.type,
+      location: jobToSave.location,
+      how_to_apply: jobToSave.how_to_apply,
+      company_logo: jobToSave.company_logo,
+      job_post_id: jobToSave.id,
+      description: jobToSave.description,
+    };
+  };
   return (
     <Card className="mb-3">
       <Card.Body>
@@ -48,6 +62,8 @@ const JobCard = ({ job }) => {
           </div>
         </Collapse>
       </Card.Body>
+
+      <button onClick={() => handleSave(job)}>save job</button>
     </Card>
   );
 };
