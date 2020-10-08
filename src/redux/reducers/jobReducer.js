@@ -13,6 +13,7 @@ const initialState = {
   loading: false,
   hasNextPage: false,
   page: 1,
+  savedJobs: [],
 };
 
 const makeRequest = (state = initialState, payload) => {

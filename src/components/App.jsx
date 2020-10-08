@@ -12,7 +12,6 @@ class App extends Component {
       <Container>
         <Route exact path="/" component={AuthForm} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
-        {/* <PrivateRoute exact path="/job-search" component={JobContainer} /> */}
       </Container>
     );
   }
