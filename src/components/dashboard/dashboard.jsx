@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Route, useRouteMatch, Switch } from "react-router-dom";
+import { Route, useRouteMatch } from "react-router-dom";
 import { connect } from "react-redux";
 import NavList from "./navList";
 import JobContainer from "../jobContainer/jobContainer";
@@ -10,7 +10,6 @@ const Dashboard = () => {
   return (
     <div>
       <NavList url={url} />
-
       <Route path={`${path}/job-search`} render={() => <JobContainer />} />
       <Route path={`${path}/profile`} render={() => <JobContainer />} />
     </div>
